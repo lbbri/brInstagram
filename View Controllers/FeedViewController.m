@@ -8,6 +8,7 @@
 
 #import "FeedViewController.h"
 #import <Parse/Parse.h>
+#import <UIKit/UIKit.h>
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 
@@ -20,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -35,6 +38,11 @@
     }];
     
 }
+
+
+
+
+
 
 /*
 #pragma mark - Navigation
