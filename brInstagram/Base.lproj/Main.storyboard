@@ -115,14 +115,31 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hew-0I-uBe"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oIZ-ru-Y5y"/>
+                    <navigationItem key="navigationItem" id="oIZ-ru-Y5y">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="uhD-Ps-Hkn">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="u2A-46-Nsr">
+                                <rect key="frame" x="20" y="13" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelTap:" destination="Wrd-vT-FO5" eventType="touchUpInside" id="syx-Hc-eiY"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="oRN-SG-zn8">
+                            <connections>
+                                <action selector="shareTap:" destination="Wrd-vT-FO5" id="a33-zZ-soS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="captionView" destination="NTZ-H5-XfG" id="s8U-Qx-a5n"/>
                         <outlet property="chosenImageView" destination="SMt-hh-tNI" id="0Ta-3v-Be2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7el-Zg-Njt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2376.811594202899" y="819.64285714285711"/>
+            <point key="canvasLocation" x="2372" y="820"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hDa-wg-ndP">

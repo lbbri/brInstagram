@@ -7,6 +7,8 @@
 //
 
 #import "ComposeViewController.h"
+#import "../brInstagram/Post.h"
+#import <Parse/Parse.h>
 
 @interface ComposeViewController ()
 
@@ -62,6 +64,27 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
+- (IBAction)shareTap:(id)sender {
+    
+    UIImage *image = self.chosenImageView.image;
+    NSString *caption = self.captionView.text;
+    
+    [Post postUserImage:image withCaption:caption withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded)
+        {
+            NSLog(@"success");
+            [self dismissViewControllerAnimated:YES completion:nil];
+
+        }
+    }];
+
+}
+- (IBAction)cancelTap:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

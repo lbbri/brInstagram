@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ComposeViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *chosenImageView;
+@property (strong, nonatomic) IBOutlet UITextView *captionView;
 
 @end
 
