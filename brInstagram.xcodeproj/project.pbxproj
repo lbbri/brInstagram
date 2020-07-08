@@ -20,6 +20,7 @@
 		7FD5506524B4E9C400D37937 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD5506424B4E9C400D37937 /* FeedViewController.m */; };
 		7FD5506824B5210100D37937 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD5506724B5210100D37937 /* ComposeViewController.m */; };
 		7FD5507124B52FA700D37937 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD5507024B52FA700D37937 /* Post.m */; };
+		7FD5507424B65EAA00D37937 /* PostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD5507324B65EAA00D37937 /* PostTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		7FD5506724B5210100D37937 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		7FD5506F24B52FA700D37937 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		7FD5507024B52FA700D37937 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		7FD5507224B65EAA00D37937 /* PostTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostTableViewCell.h; sourceTree = "<group>"; };
+		7FD5507324B65EAA00D37937 /* PostTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostTableViewCell.m; sourceTree = "<group>"; };
 		B4A26FB7D13311D4E87DF0D1 /* Pods-brInstagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-brInstagram.debug.xcconfig"; path = "Target Support Files/Pods-brInstagram/Pods-brInstagram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +110,8 @@
 		7FD5501E24B4C06000D37937 = {
 			isa = PBXGroup;
 			children = (
+				7FD5507224B65EAA00D37937 /* PostTableViewCell.h */,
+				7FD5507324B65EAA00D37937 /* PostTableViewCell.m */,
 				7FD5505F24B4E31300D37937 /* View Controllers */,
 				7FD5502924B4C06000D37937 /* brInstagram */,
 				7FD5504524B4C06100D37937 /* brInstagramTests */,
@@ -365,6 +370,7 @@
 				7FD5502F24B4C06000D37937 /* SceneDelegate.m in Sources */,
 				7FD5506224B4E33F00D37937 /* LoginViewController.m in Sources */,
 				7FD5507124B52FA700D37937 /* Post.m in Sources */,
+				7FD5507424B65EAA00D37937 /* PostTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
