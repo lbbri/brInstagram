@@ -58,6 +58,7 @@
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
+    [postQuery includeKey:@"caption"];
     postQuery.limit = 20;
     
     //asynchronously get data from database
@@ -68,7 +69,7 @@
             //do something == load an array with posts
             [self.tableView reloadData];
 
-            NSLog(@"hi");
+            //NSLog(@"hi");
         }
         else
         {
