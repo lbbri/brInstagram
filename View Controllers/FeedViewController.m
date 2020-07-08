@@ -17,6 +17,8 @@
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 
 
 @end
@@ -32,6 +34,15 @@
     [self fetchFeed];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    //would keep spinning if this method was not called... it calls fetchTimeLine on self
+    [self.refreshControl addTarget:self action:@selector(fetchFeed) forControlEvents:UIControlEventValueChanged];
+    //add the refreshcontrol to the tableview
+    [self.tableView addSubview:self.refreshControl];
+    //which is better?  [self.tableView insertSubview:self.refreshControl atIndex:0];
+
+   
 
     // Do any additional setup after loading the view.
     
@@ -75,6 +86,8 @@
         {
             NSLog(@"error: %@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
+
     }];
     
     
