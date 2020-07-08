@@ -134,7 +134,7 @@
                                         <connections>
                                             <outlet property="captionLabel" destination="5oO-Nj-Vl1" id="wWQ-Ly-Xcf"/>
                                             <outlet property="photoImageView" destination="sTU-6d-A62" id="i2F-OR-wf1"/>
-                                            <outlet property="timeStampLabel" destination="alw-Sl-uqt" id="dsi-no-d2k"/>
+                                            <outlet property="timeStampLabel" destination="alw-Sl-uqt" id="bLQ-6h-FUu"/>
                                             <outlet property="usernameLabel" destination="coK-Wg-Uaa" id="v8U-Lv-Uea"/>
                                         </connections>
                                     </tableViewCell>
