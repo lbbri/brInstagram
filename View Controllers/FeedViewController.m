@@ -13,6 +13,8 @@
 #import "Post.h"
 #import "PostTableViewCell.h"
 #import "LoginViewController.h"
+#import "DetailsViewController.h"
+
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -94,15 +96,24 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+     if([sender isKindOfClass:[PostTableViewCell class]]){
+         
+         UITableViewCell *tappedCell = sender;
+         NSIndexPath *indexPath= [self.tableView indexPathForCell:tappedCell];
+         Post *post = self.feedPostsArray[indexPath.row];
+         
+        DetailsViewController *currentDVC = [segue destinationViewController];
+         currentDVC.post = post;
+         
+     }
 }
-*/
+
 
 
 //necessary for UITableViewSource implementation: gets # of rows

@@ -1,8 +1,8 @@
 //
-//  PostTableViewCell.h
+//  DetailsViewController.h
 //  brInstagram
 //
-//  Created by brm14 on 7/8/20.
+//  Created by brm14 on 7/9/20.
 //  Copyright © 2020 brm14. All rights reserved.
 //
 
@@ -11,13 +11,9 @@
 
 #import "PFImageView.h"
 
-//@import Parse;
-
-
 NS_ASSUME_NONNULL_BEGIN
 
-
-@interface PostTableViewCell : UITableViewCell
+@interface DetailsViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet PFImageView *photoImageView;
 @property (strong, nonatomic) Post *post;
@@ -27,9 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)setPost:(Post *)post;
-
 - (NSString*)formatDate:(NSDate *)date;
-
 
 
 @end

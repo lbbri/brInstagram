@@ -8,6 +8,7 @@ target 'brInstagram' do
   # Pods for brInstagram
   pod 'Parse'
   pod 'Parse/UI'
+  pod 'DateTools'
  
   
 end

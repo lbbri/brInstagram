@@ -8,6 +8,8 @@
 
 #import "PostTableViewCell.h"
 #import <Parse/Parse.h>
+#import "NSDate+DateTools.h"
+
 
 @implementation PostTableViewCell
 
@@ -29,8 +31,14 @@
     self.photoImageView.file = post.image;
     self.captionLabel.text = post.caption;
     self.usernameLabel.text = post.author.username;
-    //self.timeStampLabel.text = post.createdAt;
+    self.timeStampLabel.text = [self formatDate:post.createdAt];
     [self.photoImageView loadInBackground];
+}
+
+- (NSString*)formatDate:(NSDate *)date {
+    NSString *timeStamp = date.shortTimeAgoSinceNow;
+    return timeStamp;
+
 }
 
 @end
