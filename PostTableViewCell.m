@@ -31,7 +31,8 @@
     self.photoImageView.file = post.image;
     self.captionLabel.text = post.caption;
     self.usernameLabel.text = post.author.username;
-    self.timeStampLabel.text = [self formatDate:post.createdAt];
+    self.usernameLabel2.text = post.author.username;
+    self.timeStampLabel.text = [NSString stringWithFormat:@"%@ ago", [self formatDate:post.createdAt]];
     [self.photoImageView loadInBackground];
 }
 
