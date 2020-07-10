@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UserFeedViewController : UIViewController
+@interface UserFeedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (strong, nonatomic) NSMutableArray *userPostsArray;
+@property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *postsCountLabel;
 
 @end
 

@@ -8,7 +8,19 @@
 
 #import "UserFeedViewController.h"
 
-@interface UserFeedViewController ()
+#import <Parse/Parse.h>
+#import <UIKit/UIKit.h>
+#import "SceneDelegate.h"
+#import "Post.h"
+#import "LoginViewController.h"
+#import "DetailsViewController.h"
+#import "PostCollectionViewCell.h"
+
+
+@interface UserFeedViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+
 
 @end
 
@@ -16,7 +28,59 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
+    
+    
+    [self fetchFeed];
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    
+    
+    //can also set in storyboard
+    layout.minimumInteritemSpacing = 5;
+    layout.minimumLineSpacing = 5;
+    
+    CGFloat postersPerLine = 3;
+    
+    //correctly calculates layout based on how many movies are on each row
+    CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine-1)) / postersPerLine;
+    CGFloat itemHeight = itemWidth;
+    
+    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+}
+
+
+- (void)fetchFeed {
+    
+    //set up the query
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    [postQuery includeKey:@"caption"];
+    [postQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    //postQuery.limit = 20;
+    
+    //asynchronously get data from database
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray <Post *>* _Nullable posts, NSError * _Nullable error) {
+        if(posts)
+        {
+            self.userPostsArray = (NSMutableArray *)posts;
+            //do something == load an array with posts
+            [self.collectionView reloadData];
+            self.usernameLabel.text =[NSString stringWithFormat:@"@%@", posts[0].author.username];
+
+            //NSLog(@"hi");
+        }
+        else
+        {
+            NSLog(@"error: %@", error.localizedDescription);
+        }
+
+    }];
+    
+    
 }
 
 /*
@@ -28,5 +92,24 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+//necessary function to implement UICollectionViewDataSource similar to TableView
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    PostCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PostCollectionViewCell" forIndexPath:indexPath];
+    Post *post = self.userPostsArray[indexPath.item];
+    
+    [cell setPost:post];
+    
+    return cell;
+}
+
+//necessary function to implement UICollectionViewDataSource similar to TableView
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    self.postsCountLabel.text = [NSString stringWithFormat:@"%lu", self.userPostsArray.count];
+    return self.userPostsArray.count;
+}
 
 @end
