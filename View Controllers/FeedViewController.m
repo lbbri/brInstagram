@@ -48,11 +48,6 @@
     //add the refreshcontrol to the tableview
     [self.tableView addSubview:self.refreshControl];
     //which is better?  [self.tableView insertSubview:self.refreshControl atIndex:0];
-
-   
-
-    // Do any additional setup after loading the view.
-    
     
 }
 
@@ -85,15 +80,10 @@
         if(posts)
         {
             self.feedPostsArray = (NSMutableArray *)posts;
-            //do something == load an array with posts
             [self.tableView reloadData];
 
-            //NSLog(@"hi");
         }
-        else
-        {
-            NSLog(@"error: %@", error.localizedDescription);
-        }
+        
         [self.refreshControl endRefreshing];
 
     }];
@@ -114,7 +104,7 @@
          NSIndexPath *indexPath= [self.tableView indexPathForCell:tappedCell];
          Post *post = self.feedPostsArray[indexPath.row];
          
-        DetailsViewController *currentDVC = [segue destinationViewController];
+         DetailsViewController *currentDVC = [segue destinationViewController];
          currentDVC.post = post;
          
      }
@@ -141,18 +131,16 @@
 }
 
 
-
 //necessary for UITableViewSource implementation: gets # of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.feedPostsArray.count;
 }
+
 //necessary for UITableViewSource implementation: asks data source for a cell to insert
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 
-    //use the Post cell that's set up on the storyboard
     PostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-    //NSLog(@"cell: %@", cell);
     
     Post *post = self.feedPostsArray[indexPath.row];
 

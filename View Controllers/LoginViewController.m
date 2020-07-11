@@ -17,8 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
+
 - (IBAction)signUpTap:(id)sender {
     
     PFUser *newUser = [PFUser user];
@@ -53,15 +53,12 @@
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
            if (error != nil)
            {
-               //NSLog(@"Error: %@", error.localizedDescription);
                alert.message = error.localizedDescription;
                [self presentViewController:alert animated:YES completion:^{
-                  //what happens after altert controller has finsihed presinting
                }];
            }
            else
            {
-               //NSLog(@"User Signed Up");
                
                [self performSegueWithIdentifier:@"loginSegue" sender:nil];
            }
@@ -77,7 +74,7 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
                                                                    message:@"Message" preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //handle try agin here. Doing nothing will dismiss the view.
+        //Doing nothing will dismiss the view.
     }];
     [alert addAction:tryAgainAction];
     
@@ -118,6 +115,12 @@
     }
     
 }
+
+
+- (IBAction)cancelTap:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

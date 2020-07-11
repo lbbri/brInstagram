@@ -68,7 +68,11 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="eD5-8t-RDs" appends="YES" id="pBo-sd-Acj"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="CEx-nl-0Nd" id="Ehm-d3-BnS"/>
@@ -77,6 +81,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="eD5-8t-RDs">
+                    <connections>
+                        <action selector="cancelTap:" destination="BYZ-38-t0r" id="e1u-Yl-y5b"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="71" y="-670"/>
         </scene>

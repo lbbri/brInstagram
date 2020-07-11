@@ -20,7 +20,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.chosenImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseImage)];
@@ -43,24 +42,20 @@
     }
     else
     {
-        NSLog(@"Camera not available");
-        //imagePickerVC.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        //NSLog(@"Camera not available");
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
--(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo: (NSDictionary<NSString *, id>*)info {
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo: (NSDictionary<NSString *, id>*)info {
     
     //gets the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     self.chosenImageView.image = editedImage;
-    
-    //do something with the images
-    
+        
     //dismiss picker and go back to original vc
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -78,7 +73,7 @@
     [Post postUserImage:image withCaption:caption withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded)
         {
-            NSLog(@"success");
+            //NSLog(@"success");
             [self dismissViewControllerAnimated:YES completion:nil];
 
         }
