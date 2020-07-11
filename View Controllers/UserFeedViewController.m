@@ -83,15 +83,26 @@
     
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([sender isKindOfClass:[PostCollectionViewCell class]]){
+        
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath= [self.collectionView indexPathForCell:tappedCell];
+        Post *post = self.userPostsArray[indexPath.row];
+        
+        DetailsViewController *currentDVC = [segue destinationViewController];
+        currentDVC.post = post;
+        
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 
 
