@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *captionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
+@property (strong, nonatomic) IBOutlet UILabel *usernameLabel2;
 
 
 - (void)setPost:(Post *)post;
