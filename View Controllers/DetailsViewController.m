@@ -28,11 +28,9 @@
 
 - (void)setPost:(Post *)post {
     _post = post;
-    //self.photoImageView.file = post[@"image"];
     self.photoImageView.file = post.image;
     self.captionLabel.text = post.caption;
     self.usernameLabel.text = post.author.username;
-    //self.timeStampLabel.text = [NSString stringWithFormat:@"%@", post.createdAt];
     self.timeStampLabel.text = [NSString stringWithFormat:@"%@ ago", [self formatDate:post.createdAt]];
 
     [self.photoImageView loadInBackground];

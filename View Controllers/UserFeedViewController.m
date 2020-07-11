@@ -60,25 +60,17 @@
     [postQuery includeKey:@"author"];
     [postQuery includeKey:@"caption"];
     [postQuery whereKey:@"author" equalTo:[PFUser currentUser]];
-    //postQuery.limit = 20;
     
     //asynchronously get data from database
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray <Post *>* _Nullable posts, NSError * _Nullable error) {
         if(posts)
         {
             self.userPostsArray = (NSMutableArray *)posts;
-            //do something == load an array with posts
             [self.collectionView reloadData];
-            //self.usernameLabel.text =[NSString stringWithFormat:@"@%@", posts[0].author.username];
             [self.navigationController.navigationBar.topItem setTitle:[NSString stringWithFormat:@"@%@", posts[0].author.username]];
 
-
-            //NSLog(@"hi");
         }
-        else
-        {
-            NSLog(@"error: %@", error.localizedDescription);
-        }
+        
 
     }];
     
