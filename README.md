@@ -46,9 +46,35 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+- User can sign up to create a new account using Parse authentication
+- Style the login page to look like the real Instagram login page.
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+<img src='signup2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+- User can log in and log out of his or her account
+- The current signed in user is persisted across app restarts
+
+<img src='loginout.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+- User can view the last 20 posts submitted to "Instagram"
+- User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
+
+<img src='signup.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+- User can pull to refresh the last 20 posts submitted to "Instagram"
+- User can take a photo, add a caption, and post it to "Instagram"
+- After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
+
+<img src='postupdate.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+- User can tap a post to view post details, including timestamp and caption.
+- Show the username and creation time for each post
+- User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
+- User can see their username at the top of the profile page.
+
+<img src='profile-details.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Credits
 
@@ -57,14 +83,14 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
 - [DateTools](https://github.com/MatthewYork/DateTools) - streamline date and time handling in iOS
 - [MBProgressHUD](https://cocoapods.org/pods/MBProgressHUD) - displays a translucent HUD with an indicator and/or labels 
-- [Parse] (gives you access to the powerful Parse Server backend) - gives you access to the powerful Parse Server backend
+- [Parse] (https://cocoapods.org/pods/Parse) - gives you access to the powerful Parse Server backend
 
 
 ## Notes
 
-Getting AutoLayout to work with the Scroll View.
-@import Parse would not work, so I had to simply #import the specific file that I needed.
-Duplicate symbols for architecture x86_64 under Xcode: I was importing an implementation file rather than the header file for a class.
+- Getting AutoLayout to work with the Scroll View.
+- @import Parse would not work, so I had to simply #import the specific file that I needed.
+- Duplicate symbols for architecture x86_64 under Xcode: I was importing an implementation file rather than the header file for a class.
 
 ## License
 
