@@ -16,10 +16,13 @@
 #import "DetailsViewController.h"
 
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+
+@property (assign, nonatomic) BOOL isMoreDataLoading;
+@property NSInteger loadNum;
 
 
 
@@ -33,13 +36,15 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self fetchFeed];
+    self.loadNum = 20;
+    
+    [self fetchFeed:self.loadNum];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     //would keep spinning if this method was not called... it calls fetchTimeLine on self
-    [self.refreshControl addTarget:self action:@selector(fetchFeed) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(fetchFeed:) forControlEvents:UIControlEventValueChanged];
     //add the refreshcontrol to the tableview
     [self.tableView addSubview:self.refreshControl];
     //which is better?  [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -65,14 +70,15 @@
     
 }
 
-- (void)fetchFeed {
+- (void)fetchFeed:(NSInteger)numofPosts {
     
     //set up the query
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     [postQuery includeKey:@"caption"];
-    postQuery.limit = 20;
+    postQuery.limit = numofPosts;
+    
     
     //asynchronously get data from database
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray <Post *>* _Nullable posts, NSError * _Nullable error) {
@@ -112,6 +118,26 @@
          currentDVC.post = post;
          
      }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    if(!self.isMoreDataLoading)
+    {
+        //calculates the position of one screen length before the bottom of the results (should probably do it earler)
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetthreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        if(scrollView.contentOffset.y > scrollOffsetthreshold && self.tableView.isDragging)
+        {
+            self.isMoreDataLoading = true;
+            //load more data
+            self.loadNum += 20;
+            [self fetchFeed:self.loadNum];
+        }
+        
+    }
+    
 }
 
 
