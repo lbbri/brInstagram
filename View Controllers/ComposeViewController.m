@@ -106,6 +106,10 @@
     return newImage;
 }
 
+- (IBAction)onScreenTap:(id)sender {
+    [self.view endEditing:YES];
+}
+
 
 /*
 #pragma mark - Navigation
