@@ -83,7 +83,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
 - [DateTools](https://github.com/MatthewYork/DateTools) - streamline date and time handling in iOS
 - [MBProgressHUD](https://cocoapods.org/pods/MBProgressHUD) - displays a translucent HUD with an indicator and/or labels 
-- [Parse] (https://cocoapods.org/pods/Parse) - gives you access to the powerful Parse Server backend
+- [Parse](https://cocoapods.org/pods/Parse) - gives you access to the powerful Parse Server backend
 
 
 ## Notes
