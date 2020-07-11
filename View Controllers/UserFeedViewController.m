@@ -69,7 +69,9 @@
             self.userPostsArray = (NSMutableArray *)posts;
             //do something == load an array with posts
             [self.collectionView reloadData];
-            self.usernameLabel.text =[NSString stringWithFormat:@"@%@", posts[0].author.username];
+            //self.usernameLabel.text =[NSString stringWithFormat:@"@%@", posts[0].author.username];
+            [self.navigationController.navigationBar.topItem setTitle:[NSString stringWithFormat:@"@%@", posts[0].author.username]];
+
 
             //NSLog(@"hi");
         }
@@ -118,8 +120,7 @@
 
 //necessary function to implement UICollectionViewDataSource similar to TableView
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    self.postsCountLabel.text = [NSString stringWithFormat:@"%lu", self.userPostsArray.count];
+
     return self.userPostsArray.count;
 }
 

@@ -9,6 +9,7 @@
 #import "ComposeViewController.h"
 #import "../brInstagram/Post.h"
 #import <Parse/Parse.h>
+#import "MBProgressHUD.h"
 
 @interface ComposeViewController ()
 
@@ -72,6 +73,8 @@
     
     image = [self resizeImage:image withSize:CGSizeMake(150.0, 150.0)];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [Post postUserImage:image withCaption:caption withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded)
         {
@@ -79,6 +82,8 @@
             [self dismissViewControllerAnimated:YES completion:nil];
 
         }
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 
 }
@@ -99,6 +104,10 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
+- (IBAction)onScreenTap:(id)sender {
+    [self.view endEditing:YES];
 }
 
 

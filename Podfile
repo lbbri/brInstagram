@@ -9,6 +9,7 @@ target 'brInstagram' do
   pod 'Parse'
   pod 'Parse/UI'
   pod 'DateTools'
+  pod 'MBProgressHUD'
  
   
 end
